@@ -6,12 +6,6 @@ import (
 	"sort"
 )
 
-// create a struct to store kv for calculating the mode
-type occur struct {
-	Key   int
-	Count int
-}
-
 func main() {
 	// Using a slice because in the future the array input
 	// could be more dynamic - also makes this a bit more challenging
@@ -36,10 +30,10 @@ func main() {
 	}
 
 	// Get the mode as a struct
-	modestruct := getMode(list)
+	modekey, modeval := getMode(list)
 
 	// let the user know the mode
-	fmt.Printf("The mode is: %d and the occurences are: %d\n", modestruct.Key, modestruct.Count)
+	fmt.Printf("The mode is: %d and the occurences are: %d\n", modekey, modeval)
 }
 
 func getMedian(list []int) int {
@@ -52,7 +46,12 @@ func getMedian(list []int) int {
 	}
 }
 
-func getMode(list []int) occur {
+func getMode(list []int) (int, int) {
+	// create a struct to store kv for calculating the mode
+	type occur struct {
+		Key   int
+		Count int
+	}
 
 	// create a new map to calculate occurrences
 	count := make(map[int]int)
@@ -76,5 +75,5 @@ func getMode(list []int) occur {
 	})
 
 	// return the first index
-	return modeslice[0]
+	return modeslice[0].Key, modeslice[0].Count
 }
