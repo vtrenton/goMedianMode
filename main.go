@@ -26,7 +26,8 @@ func main() {
 	if med_ind <= len(list) {
 		fmt.Printf("The median is %d\n", list[med_ind])
 	} else {
-		fmt.Println("Something went wrong! index is out of range!")
+		fmt.Fprintf(os.Stderr, "something went wrong, index is out of range")
+		os.Exit(1)
 	}
 
 	// Get the mode as a struct
