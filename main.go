@@ -7,8 +7,6 @@ import (
 )
 
 func main() {
-	// Using a slice because in the future the array input
-	// could be more dynamic - also makes this a bit more challenging
 	list := []int{1, 3, 4, 15, 18, 3, 2, 12, 18, 22, 18}
 
 	if len(list) < 1 {
